@@ -1,0 +1,4 @@
+liens pour explication de la data base :
+https://www.unb.ca/cic/datasets/nsl.html
+https://kdd.ics.uci.edu/databases/kddcup99/task.html
+https://www.unsw.adfa.edu.au/unsw-canberra-cyber/cybersecurity/ADFA-NB15-Datasets/
