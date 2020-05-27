@@ -24,14 +24,10 @@ df_with_column_name.drop(['num_failed_logins','logged_in', 'num_file_creations',
 
 list_service_del = ['eco_i', 'klogin', 'red_i', 'aol', 'uucp', 'stmp', 'gopher']
 
-# if df_with_column_name['service'] in list_service_del:
-#     df_with_column_name.drop(axis = 0)
-
 
 for service_name in list_service_del:
-    df_good_row = df_with_column_name[df_with_column_name.service != service_name]
-    print(service_name)
-    
-print(df_good_row['service'].unique())
+    df_with_column_name.drop(df_with_column_name[df_with_column_name.service == service_name].index, inplace=True)
+print(df_with_column_name.service.unique())
+
 
 
