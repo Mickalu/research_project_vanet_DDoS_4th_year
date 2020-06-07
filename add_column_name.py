@@ -24,23 +24,22 @@ df.rename(columns={0: 'duration', 1:'protocol_type', 2:'service', 3:'flag', 4:'s
 df.to_csv('KDD_with_name.csv', index=False) 
 
 
-
-
 df_with_column_name = pd.read_csv("KDD_with_name.csv")
 
 # Delete the last column
-df_with_column_name.drop(df_with_column_name.columns[-1], axis=1, inplace=True)
+#df_with_column_name.drop(df_with_column_name.columns[-1], axis=1, inplace=True)
 
 # And the useless columns
-df_with_column_name.drop(['num_failed_logins','logged_in', 'num_file_creations', 'num_shells', 'num_access_files', 'num_outbound_cmds', 'is_hot_login', 'is_guest_login'], axis = 1, inplace = True)
+#df_with_column_name.drop(['num_failed_logins','logged_in', 'num_file_creations', 'num_shells', 'num_access_files', 'num_outbound_cmds', 'is_hot_login', 'is_guest_login'], axis = 1, inplace = True)
 
-list_service_del = ['aol', 'eco_i', 'efs', 'gopher', 'hostnames', 'klogin', 'login', 'netbios_dgm', 'netbios_ns', 'netbios_ssn', 'nntp', 'pop_2', 'pop_3', 'red_i', 'stmp', 'sunrpc', 'tftp_u', 'uccp', 'uccp_path', 'X11', 'Z39_50']
+# list_service_del = ['aol', 'eco_i', 'efs', 'gopher', 'hostnames', 'klogin', 'login', 'netbios_dgm', 'netbios_ns', 'netbios_ssn', 'nntp', 'pop_2', 'pop_3', 'red_i', 'stmp', 'sunrpc', 'tftp_u', 'uccp', 'uccp_path', 'X11', 'Z39_50']
 
 
-for service_name in list_service_del:
-    df_with_column_name.drop(df_with_column_name[df_with_column_name.service == service_name].index, inplace=True)
-print(df_with_column_name.service.unique())
-print(df_with_column_name)
+# for service_name in list_service_del:
+#     df_with_column_name.drop(df_with_column_name[df_with_column_name.service == service_name].index, inplace=True)
+    
+# print(df_with_column_name.service.unique())
+# print(df_with_column_name)
 
 
 
