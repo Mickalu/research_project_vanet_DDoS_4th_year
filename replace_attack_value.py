@@ -19,8 +19,9 @@ DDoS =  ['neptune', 'teardrop', 'smurf', 'pod', 'back', 'land']
 attack = ['warezclient', 'ipsweep', 'portsweep', 'nmap', 'satan', 'guess_passwd', 'ftp_write', 'multihop', 'rootkit', 'buffer_overflow', 'imap', 'warezmaster', 'phf', 'loadmodule', 'spy', 'perl']
 
 
-df['attack_name'].replace(to_replace = DDoS, value = 'DDoS', inplace = True)
-df['attack_name'].replace(to_replace = attack, value = 'attack', inplace = True)
+df['attack_name'].replace(to_replace = DDoS, value = 0, inplace = True)
+df['attack_name'].replace(to_replace = attack, value = 1, inplace = True)
+df['attack_name'].replace(to_replace = 'normal', value = 2, inplace = True)
 
 change_string_int_value(df, 'protocol_type')
 change_string_int_value(df, 'service')
