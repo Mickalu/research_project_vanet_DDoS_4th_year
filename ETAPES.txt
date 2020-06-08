@@ -1,0 +1,4 @@
+
+=> recoller tous les codes pour aboutir à la base de donnée
+=> mettre des valeurs numériques à la place des strings
+=> recherche des algorithmes et des hyperparamètres

@@ -19,3 +19,4 @@ df['attack_name'].replace(to_replace = attack, value = 'attack', inplace = True)
 
 df.to_csv('KDD_attack_name_change.csv', index=False) 
 
+

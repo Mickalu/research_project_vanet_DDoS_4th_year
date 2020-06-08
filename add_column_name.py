@@ -20,17 +20,24 @@ df.rename(columns={0: 'duration', 1:'protocol_type', 2:'service', 3:'flag', 4:'s
                    37:'dst_host_serror_rate', 38:'dst_host_srv_serror_rate', 39:'dst_host_rerror_rate', 40:'dst_host_srv_rerror_rate',
                    41:'attack_name'}, inplace=True)
 
-# Save in a new csv file
-df.to_csv('KDD_with_name.csv', index=False) 
+
 
 
 df_with_column_name = pd.read_csv("KDD_with_name.csv")
 
 # Delete the last column
-#df_with_column_name.drop(df_with_column_name.columns[-1], axis=1, inplace=True)
+df_with_column_name.drop(df_with_column_name.columns[-1], axis=1, inplace=True)
 
 # And the useless columns
-#df_with_column_name.drop(['num_failed_logins','logged_in', 'num_file_creations', 'num_shells', 'num_access_files', 'num_outbound_cmds', 'is_hot_login', 'is_guest_login'], axis = 1, inplace = True)
+df_with_column_name.drop(['num_failed_logins','logged_in', 'num_file_creations', 'num_shells', 'num_access_files', 'num_outbound_cmds', 'is_hot_login', 'is_guest_login'], axis = 1, inplace = True)
+
+
+# Save in a new csv file
+df_with_column_name.to_csv('KDD_with_name.csv', index=False) 
+
+
+
+
 
 # list_service_del = ['aol', 'eco_i', 'efs', 'gopher', 'hostnames', 'klogin', 'login', 'netbios_dgm', 'netbios_ns', 'netbios_ssn', 'nntp', 'pop_2', 'pop_3', 'red_i', 'stmp', 'sunrpc', 'tftp_u', 'uccp', 'uccp_path', 'X11', 'Z39_50']
 
