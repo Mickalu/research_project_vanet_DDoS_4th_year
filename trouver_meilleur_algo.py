@@ -21,7 +21,7 @@ import warnings
 warnings.filterwarnings("ignore") #pour ignorer les warning dans la console
 ##############################################################
 
-df = pd.read_csv("KDD_attack_name_change.csv")
+df = pd.read_csv("KDD_clean_database.csv")
 
 
 X = df.drop('attack_name', axis = 1)
