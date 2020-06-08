@@ -9,7 +9,7 @@ Created on Sun Jun  7 18:46:12 2020
 import pandas as pd
 
 def change_string_int_value(df, colonne):
-    for indx, val in enumerate(df[colonne].unique()):
+    for indx, val in enumerate(sorted(df[colonne].unique())):
         df[colonne].replace(to_replace = val, value = indx, inplace = True)
 
 
