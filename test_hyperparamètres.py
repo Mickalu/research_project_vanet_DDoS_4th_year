@@ -37,11 +37,11 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import GridSearchCV
 
 # Number of trees in random forest
-n_estimators = [int(x) for x in np.linspace(start = 10, stop = 200, num = 25)]
+n_estimators = [x for x in range(50,150,10)]
 # Number of features to consider at every split
 max_features = ['auto', 'sqrt', 'log2']
 # Maximum number of levels in tree
-max_depth = [x for x in range(1, 100, 1)]
+max_depth = [x for x in range(10, 30, 1)]
 max_depth.append(None)
 # Minimum number of samples required to split a node
 min_samples_split = [2, 5, 10]
@@ -52,25 +52,27 @@ bootstrap = [True, False]
 
 criterion = ['gini', 'entropy']
 # Create the random grid
-random_grid = {'max_depth': max_depth}
+random_grid = {'n_estimators': n_estimators,
+               'max_depth': max_depth}
 
 # Use the random grid to search for best hyperparameters
 # First create the base model to tune
-rf = RandomForestClassifier(random_state=1)
+# rf = RandomForestClassifier(random_state=1)
 # Random search of parameters, using 3 fold cross validation, 
 # search across 100 different combinations, and use all available cores
-rf_random = GridSearchCV(rf, random_grid, cv = 5)
+# rf_random = GridSearchCV(rf, random_grid, cv = 5)
 # Fit the random search model
-rf_random.fit(X, y)
+# rf_random.fit(X, y)
 
-print(rf_random.best_params_)
+# print('Best params : ', rf_random.best_params_)
+# print('Best score : ', rf_random.best_score_)
 
-# rf2 = RandomForestClassifier(n_estimators=128, bootstrap=False, random_state=1)
+# rf2 = RandomForestClassifier(n_estimators=110, bootstrap=False, max_depth=None, random_state=1)
 # - n_estimators=128 
 # - max_features='auto' (par défaut)
 # - bootstrap=False
 # - criterion='gini' (par défaut)
-# - 
+# - max_depth=28
 
 # rf.fit(X_train, y_train)
 # rf2.fit(X_train, y_train)
@@ -84,3 +86,14 @@ print(rf_random.best_params_)
 # print("rf accuracy_score : ", rf_accuracy_score)   
 # print("rf2 accuracy_score : ", rf2_accuracy_score)
 # print(rf2_accuracy_score - rf_accuracy_score)
+
+accuracy_list=[]
+for i in n_estimators:
+    rf = RandomForestClassifier(n_estimators=i, random_state=1)
+    rf.fit(X_train,y_train)
+    rf.predict(X_test)
+    rf_accuracy_score = accuracy_score(y_test, rf_predict)
+    accuracy_list.append(rf_accuracy_score)
+
+plt.plot(n_estimators, ac_sc)
+plt.show()
